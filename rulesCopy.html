@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Indie+Flower&family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+  <title>Rules - Math Game</title>
+  <div id="results"></div>
+  
+  <script>
+    const results = localStorage.getItem("gameResults");
+
+        // Display the result if available
+        if (results) {
+            document.getElementById("results").innerHTML = results;
+        } else {
+            document.getElementById("results").innerHTML = "No results found.";
+        }
+  </script> 
+  <style>
+    
+    
+    body {
+      background-color: #fefeff; /* the color works here */
+      border: 4px solid orange;
+      height: 100%;
+      width: 100%;
+    }
+    #title {
+      position: relative;
+      text-align: center;
+      font-size: 70px;
+      font-family: "Permanent Marker", cursive;
+      /* font-weight: 100; */
+      font-style: normal;
+      padding-bottom: 0px;
+      margin: 0 auto;
+      color: black;
+      text-decoration: none;
+      z-index: 1;
+    }
+    
+    hr {
+      position: relative; 
+      /* change the position */
+      /* width: 100%;*/
+      border: 2px solid #4dadf9;
+      margin-bottom: 0px;
+      /* padding-top: 0px; */
+      /* padding-bottom: -10px; */
+  
+      top: -15px;
+      padding-top: none;
+    } 
+    
+    
+    /* .br {
+      
+      border: 4px solid orange;
+      /* border-bottom: 2px solid #4dadf9; */
+      /* padding-bottom: -100px;
+      line-height: 900px; */
+      /* edit the line height */
+      /*line height is not editing*/
+      
+    /* } */
+    .vl {
+      position: relative;
+      border-left: 3px solid #f56465;
+      height: 100%;
+      left: 10%;
+      position: absolute;
+      top: 0;
+
+    }
+    .text {
+      position: relative;
+      left: 10%;
+      text-indent: 14px;
+      font-family: 'Indie flower';
+      font-size: 29px;
+      margin-bottom: -10px;
+      margin-top: 0px;
+      
+      border:2px solid green;
+      width:80%;
+    }
+
+    #back {
+      left: 10%;
+      position:relative;
+      display: block;
+      /* border-radius: 3px 5px 3px 5px; /* Rounded corners on top, sharp on bottom  */
+      
+      width: 100px;
+      height: 40px;
+      background-color: pink;
+      border-radius: 3px;
+      border: 1px solid gray;
+      /* box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3); */
+      text-align: center; /* Center the text within the eraser */
+      line-height: 36px;/* Vertically center the text */
+      font-size: 16px;
+      color: black;
+      font-family: 'Permanent Marker';
+      text-decoration: none; /* Remove default underline for links */
+      transition-duration: 300ms;
+      transition-delay: 30ms;
+      transition-timing-function: ease-in-out;
+      /* use ease-in */
+      /* use a transition property to make it smooth */
+      
+      border-radius: 5px 2px 5px 2px; /* Rounded corners on top, sharp on bottom */
+      box-shadow: 12px 3px 5px -1px rgba(0, 0, 0, 0.3) inset, 11px 7px 3px 0px rgba(0, 0, 0, 0.3);
+      text-indent: 14px;
+      
+    }
+    #back:hover {
+      /* border-radius: 3px 3px 3px 3px; /* Rounded corners on top, sharp on bottom */
+      box-shadow: 12px 3px 5px -1px rgba(0, 0, 0, 0.3) inset, 11px 7px 3px 0px rgba(0, 0, 0, 0.3);
+      left: 9%;
+      text-indent: 14px; 
+     
+      /* box-shadow: 12px 0 0 -1px rgba(0, 0, 0, 0.3) inset,2px 2px 3px rgba(0, 0, 0, 0.3); */
+      /* box-shadow: 15px 0 0 -5px rgba(0, 0, 0, 0.3) inset; */
+      /* this might be the answer */
+      /* transform: rotatex(150deg); */
+      /* maybe transform the y axis */
+      transform: rotatey(45deg);
+    }
+    
+    
+
+
+  </style>
+</head>
+<body>
+  <a id="title" href="mathgameCoverCopy.html">Math Game</a>
+  <!-- <p id="title">Math Game</p> -->
+  <div class="vl"></div>
+  
+  <hr><!-- horizontal line -->
+
+  <div class="hl"></div>
+  <div class="hl"></div>
+  <div class="hl"></div>
+
+  <div class="text"><p>Select the desired math operator.</p></div>
+    <!-- i could just color in the bottom border of the text so it is easier to create the effect of a horiz line  -->
+  <hr><!-- horizontal line -->
+  <div class="text"><p>Math problems, that are related to the operator selected, will appear.</p></div>
+  <hr><!-- horizontal line -->
+  <div class="text"><p>The goal is to answer as many of the math problems as you can.</p></div>
+  <hr><!-- horizontal line -->
+  <div class="text"><p>Game will end once a question is answered incorrectly.</p></div>
+  <hr><!-- horizontal line -->
+  <a id="back" href="mathgameCoverCopy.html">back</a>
+
+  <!-- <script>
+    const lines = document.querySelectorAll('hr');
+    const newText = document.createElement('p');
+    newText.textContent = 'This is new text';
+
+// Insert the new text before the first line
+lines[0].parentNode.insertBefore(newText, lines[0]);
+function insertAboveLine(newText, targetLine) {
+    targetLine.parentNode.insertBefore(newText, targetLine);
+}
+
+
+// Assuming you have a function to determine the position of the new text
+const targetLineIndex = determineTargetLineIndex();
+const targetLine = lines[targetLineIndex];
+insertAboveLine(newText, targetLine);
+
+
+  </script> -->
+</body>
+
+  <!-- i need to make the text reach near the top of the line and i need to lower the line height -->
+</html>
